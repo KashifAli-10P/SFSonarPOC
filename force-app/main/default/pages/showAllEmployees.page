@@ -1,0 +1,27 @@
+<apex:page controller="createNewEmployee" showHeader="false" sidebar="true">
+      <apex:form > 
+    	<apex:pageBlock title="All Employees">
+            <apex:pageMessages id="msg" />
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!createNew}" value="New Employee"/>
+            </apex:pageBlockButtons>
+        <apex:pageBlockSection columns="5" >
+            <apex:pageBlockTable value="{!employees}" var="emp">
+                <apex:column headerValue="Actions">
+                    <apex:commandLink action="{!Edit}">Edit
+                    	<apex:param name="employeeId" assignTo="{!empId}" value="{!emp.id}"/>
+                    </apex:commandLink>&nbsp;&nbsp;
+                    <apex:commandLink action="{!DeleteEmployee}" onclick="return confirmDelete();">Delete
+                        <apex:param name="employeeId" assignTo="{!empId}" value="{!emp.id}"/>
+                    </apex:commandLink>
+                </apex:column>
+                <apex:column headerValue="Name"><apex:outputField value="{!emp.name}"/></apex:column>&nbsp;&nbsp;
+                <apex:column headerValue="Email"><apex:outputField value="{!emp.Email__c}"/></apex:column>&nbsp;&nbsp;
+                <apex:column headerValue="Phone"><apex:outputField value="{!emp.Phone__c}"/></apex:column>&nbsp;&nbsp;
+                <!--apex:column headerValue="Address"><apex:outputField value="{!emp.address__c}"/></apex:column-->
+                <apex:column headerValue="Title"><apex:outputField value="{!emp.Title__c}"/></apex:column>&nbsp;&nbsp;
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>      
+</apex:page>

@@ -1,0 +1,32 @@
+<apex:page standardController="Account">
+    <apex:includeScript value="/lightning/lightning.out.js" />
+    <apex:includeLightning />
+
+        <div id="Con" />
+
+         <script>
+
+            $Lightning.use("c:componmentAccount1", function() {
+
+                $Lightning.createComponent(
+
+                    "c:componmentAccount",
+
+                    {},
+
+                    "Con",
+
+                    function(cmp) {
+
+                        console.log("Component is created!");
+
+                        console.log(cmp);
+
+                    });
+
+                });
+
+        
+
+          </script>
+</apex:page>

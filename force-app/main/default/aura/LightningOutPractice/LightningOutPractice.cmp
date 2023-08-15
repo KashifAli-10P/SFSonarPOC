@@ -1,0 +1,5 @@
+<aura:component >
+    <aura:attribute name="vfParam" type="String" default="Test" />
+    <p>Parameter from VF lightning out: {!v.vfParam}</p>
+    <p>Test Paragraph</p>
+</aura:component>

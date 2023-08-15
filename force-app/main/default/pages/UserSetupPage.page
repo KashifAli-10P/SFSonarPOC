@@ -1,0 +1,78 @@
+<apex:page controller="UserSetUpController">
+    <apex:form >
+        <apex:pageBlock id="SelectUserBlock">
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:pageBlockSection title="User Setup" columns="1">
+                <apex:inputField value="{!selectedUser.Selected__c}"/>
+                <apex:inputField value="{!selectedUser.Read__c}"/>
+                <apex:inputField value="{!selectedUser.Write__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="Bottom">
+                <apex:commandButton action="{!Save}" value="Save"/>
+                <apex:commandButton action="{!Cancel}" value="Cancel"/>
+                <apex:param name="userID" assignTo="{!selectedUserID}" value="{!selectedUser.id}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="All Users">
+                <apex:pageBlockTable id="ShowAllEmployeeBlock" value="{!wrappers}" var="wu" columns="7">
+                    <apex:column headerClass="header">
+                        <apex:facet name="header">
+                            <apex:inputCheckbox value="{!checkAll}" >
+                            	<apex:actionSupport event="onclick" action="{!selectAll}" reRender="ShowAllEmployeeBlock"/> 
+                            </apex:inputCheckbox>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!wu.isSelected}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <!--apex:outputLabel value="Name {! if(sortingOrder == 'ASC','▼','▲')}" / -->
+                            <apex:commandLink action="{!toggleHeader}" value="{!header}" reRender="ShowAllEmployeeBlock" />
+                    </apex:facet>
+                        <apex:outputField value="{!wu.usr.Name}"/>
+                    </apex:column>
+                    <apex:column value="{!wu.usr.email}"/>
+                    <apex:column value="{!wu.usr.Read__c}"/>
+                    <apex:column value="{!wu.usr.Write__c}"/>
+                    <apex:column headerValue="Action">
+                        <apex:commandLink action="{!editUser}" value="Edit" reRender="SelectUserBlock">
+                            <apex:param name="userID" assignTo="{!selectedID}" value="{!wu.usr.id}"/>
+                        </apex:commandLink>
+                    </apex:column>
+                    <apex:column headerValue="Action">
+                        <apex:commandLink action="{!deleteUser}" value="Delete">
+                            <apex:param name="userID" assignTo="{!selectedID}" value="{!wu.usr.id}"/>
+                        </apex:commandLink>
+                    </apex:column>
+                    <apex:column headerValue="Action">
+                        <apex:commandLink action="{!sendEmail}" value="Email">
+                        	<apex:param name="userID" assignTo="{!selectedID}" value="{!wu.usr.id}"/>
+                        </apex:commandLink>    
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton action="{!deleteSelected}" value="Delete Selected"/>
+                <apex:commandButton action="{!emailSelected}" value="Email Selected"/>
+            </apex:pageBlockButtons>         
+        </apex:pageBlock>
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Columns" columns="{!cols}">
+                <apex:pageBlockSectionItem >
+                    <apex:outputText >Test Item1</apex:outputText>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputText >Test Item2</apex:outputText>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputText >Test Item3</apex:outputText>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputText >Test Item4</apex:outputText>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>   
+</apex:page>

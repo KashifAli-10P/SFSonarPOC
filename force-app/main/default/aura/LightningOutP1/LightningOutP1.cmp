@@ -1,0 +1,10 @@
+<aura:component >
+    <aura:attribute name="userFirstName" type="String" default="-" />
+    <aura:attribute name="userLastName" type="String" default="-" />
+    <aura:attribute name="userAge" type="Integer" default="70" />
+	
+    <p>User First Name: {!v.userFirstName}</p>
+    <p>User Last Name: {!v.userLastName}</p>
+    <p>User Age: {!v.userAge}</p>
+    
+</aura:component>

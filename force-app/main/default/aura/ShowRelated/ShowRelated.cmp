@@ -1,0 +1,7 @@
+<aura:component controller="FindRelatedRecords" implements="force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name ="RelatedContacts" type="List" />
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}" />
+    <aura:iteration items="{!v.Related}" var="con">
+        {!Con.FirstName}
+    </aura:iteration>
+</aura:component>

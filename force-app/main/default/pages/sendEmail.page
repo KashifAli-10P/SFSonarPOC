@@ -1,0 +1,17 @@
+<apex:page controller="UserSetUpController">
+    <apex:form >
+        <apex:messages ></apex:messages>
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Compose Email" columns="1">
+                <apex:inputField value="{!email.subject}"/>
+                
+                <apex:inputText label="Send To" value="{!addresses}"/> 
+                <apex:inputTextArea value="{!email.body}" richText="true"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton action="{!sendEmailMethod}" value="Send Mail"/>
+                <apex:commandButton action="{!Cancel}" value="Cancel"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>    
+</apex:page>

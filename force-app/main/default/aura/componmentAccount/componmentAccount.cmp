@@ -1,0 +1,13 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId">
+    
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="esProd" type="Boolean" default='true' />
+    
+    <aura:attribute name="fields" type="String[]" default="['Name','Industry']"/>
+    
+    <lightning:accordion >
+        <lightning:accordionSection name="A" label="ES Pricing Data">
+            <lightning:recordForm recordId="{!v.recordId}" objectApiName="Account" mode="edit" fields="{!v.fields}" />
+        </lightning:accordionSection>
+    </lightning:accordion>
+</aura:component>

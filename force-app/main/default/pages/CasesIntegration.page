@@ -1,0 +1,35 @@
+<apex:page controller="CasesIntegrationHandler">
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:form >
+        <apex:pageBlock title="Create New Case">
+            <apex:pageBlockSection columns="2">
+                <apex:inputField value="{!newCase.Subject}" required="true" />
+                <apex:inputField value="{!newCase.Type}" required="true" />
+                <apex:inputField value="{!newCase.Reason}" />
+                <apex:inputField value="{!newCase.Status}" required="true" />
+                <apex:inputField value="{!newCase.Priority}" required="true" />
+                <apex:inputField value="{!newCase.Origin}" required="true" />
+                <apex:inputField value="{!newCase.Description}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton action="{!saveCase}" title="Save" value="Save" />
+                <apex:commandButton action="{!cancel}" title="Cancel" value="Cancel" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        <apex:pageBlock title="Cases in System" rendered="{!showCases}">
+            <apex:pageBlockTable value="{!caseWrapList}" var="caseObj">
+                <apex:column headerValue="Select">
+                    <apex:inputCheckbox value="{!caseObj.isSelected}" />
+                </apex:column>
+                <apex:column headerValue="Subject" value="{!caseObj.currCase.Subject}"  />
+                <apex:column headerValue="Type" value="{!caseObj.currCase.Type}"  />
+                <apex:column headerValue="Status" value="{!caseObj.currCase.Status}"  />
+                <apex:column headerValue="Status" value="{!caseObj.currCase.Priority}"  />
+                <apex:column headerValue="Origin" value="{!caseObj.currCase.Origin}"  />
+            </apex:pageBlockTable>
+            <apex:outputText value="{!noCasesMessage}" rendered="{!noCaseShow}"></apex:outputText>
+        </apex:pageBlock>
+        
+	</apex:form>
+    
+</apex:page>

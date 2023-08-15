@@ -1,0 +1,75 @@
+<template>
+    <lightning-tree-grid
+        columns={gridColumns}
+        data={gridData}
+        key-field="Id"
+        hide-checkbox-column="true"
+    >
+    </lightning-tree-grid>
+    <div class="slds-m-top_small slds-size_2-of-3" style="text-align: center;">
+              <div class="omniPager"  style="bottom: 0px; text-align: center;">
+                <div class="pagerContainer pagerPageInfo">
+                    <span >
+                        {startingRecord}&nbsp;-&nbsp;{endingRecord}&nbsp;of {totalRecountCount}&nbsp;
+                    </span>
+                </div>
+                <div class="page-size">
+                    <div class=" pagerContainer pagerPageSize">
+                        <div class="uiInput uiInputSelect uiInput--default uiInput--select">
+                            <label class="uiLabel-left form-element__label uiLabel" >
+                                <span class="" >
+                                    Display&nbsp;&nbsp;
+                                </span>
+                            </label>
+                            <select size="1" aria-describedby="" class="pagerPageSize select" onchange={handleSelect}>
+                              <option value="5" selected="selected" class="uiInputSelectOption">
+                                  5
+                              </option>
+                                <option value="10"  class="uiInputSelectOption">
+                                    10
+                                </option>
+                                <option value="25" class="uiInputSelectOption">
+                                    25
+                                </option>
+                                <option value="50" class="uiInputSelectOption">
+                                    50
+                                </option>
+                            </select>
+                        </div>
+                        <div class="records-per-page-label">
+                            &nbsp;&nbsp;{pageSize} records per page
+                        </div>
+                    </div>
+  
+                    <div class=" pagerContainer pagerNextPrevious">
+                        <lightning-icon  icon-name="utility:jump_to_left" size="x-small" 
+                            style="margin-top: 4px; margin-left: 4px;" onclick={firstprevioushandler} 
+                            disabled={previousBtnDisable}>
+                        </lightning-icon>
+                        <lightning-icon  icon-name="utility:left" size="x-small" 
+                            style="margin-top: 4px; margin-left: 4px;" onclick={previousHandler} 
+                            disabled={previousBtnDisable}>
+                        </lightning-icon>
+                        <button id='previous' class="btnClass" onclick={previousHandler}  
+                            disabled={previousBtnDisable}>
+                            Previous
+                        </button>&nbsp;&nbsp;
+                        <button id ='next' class="btnClass" onclick={nextHandler}  
+                            disabled={nextBtnDisable}>
+                            Next
+                        </button>
+                        <lightning-icon  icon-name="utility:right" size="x-small" 
+                            style="margin-top: 4px; margin-left: 4px;" onclick={nextHandler} 
+                            disabled={nextBtnDisable}>
+                        </lightning-icon>
+                        <lightning-icon  icon-name="utility:jump_to_right" size="x-small" 
+                            style="margin-top: 4px; margin-left: 4px;" onclick={lastnexthandler} 
+                            disabled={nextBtnDisable}>
+                        </lightning-icon>
+  
+                        <p style="margin-top: 4px; ">&nbsp;&nbsp; Page  {page} </p>
+                    </div>
+                </div>
+              </div>
+            </div>
+</template>

@@ -1,0 +1,16 @@
+<apex:page >
+    <apex:includeLightning />
+    <p>
+        Lightning Out Paragraph.
+    </p>
+    <div id="cmphere">
+        
+    </div>
+    <script>
+        $Lightning.use("c:LightningOutPracticeApp", function(){
+            $Lightning.createComponent("c:LightningOutPractice", {vfParam: "This is the param passed from vf"}, "cmphere", function(component){
+                console.log("vf cmp loaded successfully.");
+            });
+        });
+    </script>
+</apex:page>
