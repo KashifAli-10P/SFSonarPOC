@@ -1,4 +1,5 @@
 public with sharing class AccountHandler {
+    public static password = 'testKashif';
     public static void CreateNewOpportunity(List<Account> accts) {
         List<Opportunity> opps = new List<Opportunity>();
         for (Account a : accts) {
