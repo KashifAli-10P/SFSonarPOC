@@ -2,6 +2,7 @@ public with sharing class AccountHandler {
     public static void CreateNewOpportunity(List<Account> accts) {
         List<Opportunity> opps = new List<Opportunity>();
         for (Account a : accts) {
+            //Adding comments to commit
             Opportunity opp = new Opportunity();
             opp.Name = a.Name + ' Opportunity';
             opp.AccountId = a.Id;
