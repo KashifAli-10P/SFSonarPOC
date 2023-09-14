@@ -120,7 +120,7 @@
 }
 
 .THIS #sfdc_forgot{
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
     font-weight:300;
     font-size: 14px;
     margin-top: 10px
